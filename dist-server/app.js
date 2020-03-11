@@ -1,5 +1,10 @@
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+
 var _express = _interopRequireDefault(require("express"));
 
 var _path = _interopRequireDefault(require("path"));
@@ -48,4 +53,5 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-module.exports = app;
+var _default = app;
+exports["default"] = _default;
