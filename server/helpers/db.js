@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 mongoose.Promise = global.Promise;
 mongoose.set('useFindAndModify', false);
-mongoose.connect('mongodb://localhost:27017/vmpbackend_db', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost:27017/vmpbackend_db', { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 
 db.on("error", function (err) {

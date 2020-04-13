@@ -5,18 +5,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _express = _interopRequireDefault(require("express"));
+var _express = require("express");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+var _user = require("../controller/user");
 
-var router = _express["default"].Router();
-/* GET home page. */
-
-
-router.get('/', function (req, res, next) {
-  res.render('index', {
-    title: 'VMP-Backend'
-  });
-});
+var router = (0, _express.Router)();
+router.post('/user/register', _user.registerUser);
+router.post('/user/login', _user.loginUser);
 var _default = router;
 exports["default"] = _default;

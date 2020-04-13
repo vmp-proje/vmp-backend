@@ -1,8 +1,9 @@
 import { Router } from 'express'
+import { registerUser, loginUser } from '../controller/user'
+
 const router = Router()
 
-router.get('/', function(req, res) {
-  res.render('index', { title: 'VMP-Backend' })
-});
+router.post('/user/register', registerUser)
+router.post('/user/login', loginUser)
 
-export default router;
+export default router
