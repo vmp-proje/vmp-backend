@@ -46,7 +46,7 @@ export const loginUser = async (req, res) => {
         })
     }
     try {
-        const user = await User.findOne({email: req.body.email})
+        const user = await User.findOne({mail: req.body.mail})
         if(!user) {
             return res.status(404).send({
                 status: 'failure',
@@ -55,11 +55,17 @@ export const loginUser = async (req, res) => {
         }
 
         bcrypt.compare(req.body.password, user.password, (error, matched) => {
+
+            if(error) {
+                console.log(err)
+            }
+
             if(matched) {
                 return res.status(200).send({
                     status: 'success',
                     data: {
-                        token: sign(user)
+                        token: sign(user),
+                        username: user.username
                     }
                 })
             } else {
@@ -69,9 +75,7 @@ export const loginUser = async (req, res) => {
                 })
             }
         })
-
-
-
+        
     } catch(e) {
         console.error(e)
         return res.status(500).send({

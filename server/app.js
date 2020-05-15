@@ -12,7 +12,7 @@ import index from './routes/index'
 
 const app = express();
 
-
+global.__basedir = "http://localhost:3000/"
 
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
@@ -24,7 +24,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static('public'));
 
 app.use('/api/v1/', index);
 

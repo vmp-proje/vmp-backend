@@ -108,7 +108,7 @@ var loginUser = /*#__PURE__*/function () {
             _context2.prev = 2;
             _context2.next = 5;
             return _User.User.findOne({
-              email: req.body.email
+              mail: req.body.mail
             });
 
           case 5:
@@ -126,11 +126,16 @@ var loginUser = /*#__PURE__*/function () {
 
           case 8:
             _bcrypt["default"].compare(req.body.password, user.password, function (error, matched) {
+              if (error) {
+                console.log(err);
+              }
+
               if (matched) {
                 return res.status(200).send({
                   status: 'success',
                   data: {
-                    token: (0, _auth.sign)(user)
+                    token: (0, _auth.sign)(user),
+                    username: user.username
                   }
                 });
               } else {

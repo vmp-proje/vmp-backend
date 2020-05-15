@@ -24,7 +24,8 @@ var _index = _interopRequireDefault(require("./routes/index"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 //import favicon from 'serve-favicon'
-var app = (0, _express["default"])(); // view engine setup
+var app = (0, _express["default"])();
+global.__basedir = "http://localhost:3000/"; // view engine setup
 
 app.set('views', _path["default"].join(__dirname, '../views'));
 app.set('view engine', 'jade'); // uncomment after placing your favicon in /public
@@ -36,7 +37,7 @@ app.use(_bodyParser["default"].urlencoded({
   extended: false
 }));
 app.use((0, _cookieParser["default"])());
-app.use(_express["default"]["static"](_path["default"].join(__dirname, '../public')));
+app.use(_express["default"]["static"]('public'));
 app.use('/api/v1/', _index["default"]); // catch 404 and forward to error handler
 
 app.use(function (req, res, next) {
